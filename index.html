@@ -282,6 +282,7 @@
       transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
       will-change: opacity;
       transform: translateZ(0);
+      cursor: pointer;
     }
 
     .banner-slide.active {
@@ -363,6 +364,93 @@
       pointer-events: none;
       z-index: 9999;
     }
+
+    .banner-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .banner-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .banner-overlay img {
+      max-width: 95%;
+      max-height: 95vh;
+      object-fit: contain;
+      transform: scale(0.95);
+      transition: transform 0.3s ease;
+      border-radius: 8px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+    }
+
+    .banner-overlay.active img {
+      transform: scale(1);
+    }
+
+    .banner-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 48px;
+      height: 48px;
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 28px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+
+    .banner-close:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .banner-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+
+    .banner-nav:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .banner-prev {
+      left: 20px;
+    }
+
+    .banner-next {
+      right: 20px;
+    }
   </style>
 </head>
 <body>
@@ -380,21 +468,21 @@
       <div class="banner-container">
         <canvas id="mouseTrailCanvas"></canvas>
         <div class="banner-slide active">
-          <img src="https://image-resource.mastergo.com/161413560307436/161413560307438/84db573611e93ab072ee5dc4070b646d.png" alt="banner1" style="width:100%;height:1024px;object-fit:cover;">
+          <img src="images/84db573611e93ab072ee5dc4070b646d.png" alt="banner1" style="width:100%;height:1024px;object-fit:cover;">
         </div>
         <div class="banner-slide">
-          <img src="https://image-resource.mastergo.com/161413560307436/161413560307438/71b0753695e2153b579b10efc05bbc2c.png" alt="banner2" style="width:100%;height:1024px;object-fit:cover;">
+          <img src="images/71b0753695e2153b579b10efc05bbc2c.png" alt="banner2" style="width:100%;height:1024px;object-fit:cover;">
         </div>
         <div class="banner-slide">
-          <img src="https://image-resource.mastergo.com/161413560307436/161413560307438/32f1b357c3c84e2d876154d8f30a520f.png" alt="banner3" style="width:100%;height:1024px;object-fit:cover;">
-        </div>
+          <img src="images/32f1b357c3c84e2d876154d8f30a520f.png" alt="banner3" style="width:100%;height:1024px;object-fit:cover;">
+      </div>
         <button class="banner-arrow prev">‹</button>
         <button class="banner-arrow next">›</button>
         <div class="banner-controls">
           <div class="banner-dot active"></div>
           <div class="banner-dot"></div>
           <div class="banner-dot"></div>
-        </div>
+    </div>
       </div>
     </div>
   </section>
@@ -402,12 +490,12 @@
   <section class="section" id="works">
     <div class="section-title">精选作品</div>
     <div class="works-grid">
-      <div class="work-item"><img src="https://image-resource.mastergo.com/161413560307436/161413560307438/cbe123c1493fb51cd1ca8a48dd48ea3b.png" alt="work1"></div>
-      <div class="work-item"><img src="https://image-resource.mastergo.com/161413560307436/161413560307438/2bf519f403bc490d477698bbc60b83ce.png" alt="work2"></div>
-      <div class="work-item"><img src="https://image-resource.mastergo.com/161413560307436/161413560307438/5469ed9594c01a85b36f4d11107d34db.png" alt="work3"></div>
-      <div class="work-item"><img src="https://image-resource.mastergo.com/161413560307436/161413560307438/9fdd9bc4d3675e4f46c5e7f205cdd4b8.png" alt="work4"></div>
-      <div class="work-item"><img src="https://image-resource.mastergo.com/161413560307436/161413560307438/2c8e38391dcb96c5f1a014ce5d690341.png" alt="work5"></div>
-      <div class="work-item"><img src="https://image-resource.mastergo.com/161413560307436/161413560307438/b7170ab2773e93970a842bb4c066c364.png" alt="work6"></div>
+      <div class="work-item"><img src="images/cbe123c1493fb51cd1ca8a48dd48ea3b.png" alt="work1"></div>
+      <div class="work-item"><img src="images/2bf519f403bc490d477698bbc60b83ce.png" alt="work2"></div>
+      <div class="work-item"><img src="images/5469ed9594c01a85b36f4d11107d34db.png" alt="work3"></div>
+      <div class="work-item"><img src="images/9fdd9bc4d3675e4f46c5e7f205cdd4b8.png" alt="work4"></div>
+      <div class="work-item"><img src="images/2c8e38391dcb96c5f1a014ce5d690341.png" alt="work5"></div>
+      <div class="work-item"><img src="images/b7170ab2773e93970a842bb4c066c364.png" alt="work6"></div>
     </div>
   </section>
 
@@ -430,8 +518,8 @@
     <div class="footer-content">
       <div>© 2024 郑思凡设计工作室. All rights reserved.</div>
       <div class="footer-links">
-        <a href="#" title="微信" style="display:inline-block;width:20px;height:20px;background:url('https://image-resource.mastergo.com/161413560307436/161413560307438/84db573611e93ab072ee5dc4070b646d.png') no-repeat center/contain;"></a>
-        <a href="#" title="QQ" style="display:inline-block;width:20px;height:20px;background:url('https://image-resource.mastergo.com/161413560307436/161413560307438/71b0753695e2153b579b10efc05bbc2c.png') no-repeat center/contain;"></a>
+        <a href="#" title="微信" style="display:inline-block;width:20px;height:20px;background:url('images/84db573611e93ab072ee5dc4070b646d.png') no-repeat center/contain;"></a>
+        <a href="#" title="QQ" style="display:inline-block;width:20px;height:20px;background:url('images/71b0753695e2153b579b10efc05bbc2c.png') no-repeat center/contain;"></a>
       </div>
     </div>
   </footer>
@@ -444,6 +532,13 @@
   <button class="back-to-top" id="backToTop">返回</button>
 
   <canvas id="particleCanvas"></canvas>
+
+  <div class="banner-overlay" id="bannerOverlay">
+    <button class="banner-close" onclick="closeBannerOverlay()">×</button>
+    <button class="banner-nav banner-prev" onclick="prevBannerImage()">‹</button>
+    <button class="banner-nav banner-next" onclick="nextBannerImage()">›</button>
+    <img src="" alt="放大的banner图片" id="bannerOverlayImage">
+  </div>
 
   <script>
     const canvas = document.getElementById('mouseTrailCanvas');
@@ -715,6 +810,62 @@
     });
 
     animate();
+
+    // Banner zoom functionality
+    const bannerOverlay = document.getElementById('bannerOverlay');
+    const bannerOverlayImage = document.getElementById('bannerOverlayImage');
+    let currentZoomedIndex = 0;
+
+    // Add click event to banner slides
+    slides.forEach((slide, index) => {
+      slide.addEventListener('click', (e) => {
+        // Pause the slideshow
+        clearInterval(slideInterval);
+        
+        const img = slide.querySelector('img');
+        bannerOverlayImage.src = img.src;
+        currentZoomedIndex = index;
+        bannerOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeBannerOverlay() {
+      bannerOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+      // Resume the slideshow
+      startSlideShow();
+    }
+
+    function prevBannerImage() {
+      currentZoomedIndex = (currentZoomedIndex - 1 + slides.length) % slides.length;
+      const img = slides[currentZoomedIndex].querySelector('img');
+      bannerOverlayImage.src = img.src;
+    }
+
+    function nextBannerImage() {
+      currentZoomedIndex = (currentZoomedIndex + 1) % slides.length;
+      const img = slides[currentZoomedIndex].querySelector('img');
+      bannerOverlayImage.src = img.src;
+    }
+
+    // Close on overlay click
+    bannerOverlay.addEventListener('click', (e) => {
+      if (e.target === bannerOverlay) {
+        closeBannerOverlay();
+      }
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && bannerOverlay.classList.contains('active')) {
+        closeBannerOverlay();
+      } else if (e.key === 'ArrowLeft' && bannerOverlay.classList.contains('active')) {
+        prevBannerImage();
+      } else if (e.key === 'ArrowRight' && bannerOverlay.classList.contains('active')) {
+        nextBannerImage();
+      }
+    });
   </script>
 </body>
 </html>
